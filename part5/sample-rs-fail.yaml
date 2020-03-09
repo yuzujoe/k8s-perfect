@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicaSet
+metadata:
+  name: sample-rs-fail
+spec:
+  replicas: 3
+  selector:
+    matcbLabels:
+      app: sample-app
+  template:
+    metadata:
+      labels:
+        #labelが不一致の際はエラーが起こる
+        app: sample-app-fail
+  spec:
+    containers:
+      - name: nginx-container
+        image: nginx:1.15
+        ports:
+          - containerPort: 80
