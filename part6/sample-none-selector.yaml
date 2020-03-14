@@ -1,0 +1,23 @@
+---
+kind: Service
+metadata:
+  name: sample-none-selector
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 80
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: sample-none-selector
+subsets:
+  # ロードバランシング先のメンバーを登録している
+  - addresses:
+    - ip: 192.168.1.1
+    - ip: 192.168.1.2
+    ports:
+      - protocol: TCP
+        port: 80
