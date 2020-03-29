@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-configmap-single-env
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:1.15
+      env:
+        - name: CONNECTION_MAX
+          valueFrom:
+              configMapKeyRef:
+                name: sample-configmap
+                key: connection.max
+      ports:
+      - containerPort: 80

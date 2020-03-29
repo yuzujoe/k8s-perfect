@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-env-pod
+  labels:
+    name: sample-app
+spec:
+  containers:
+  - name: nginx-containar
+    image: nginx:1.15
+    env:
+      - name: K*S_NODE
+        valueFrom:
+          fieldRef:
+            fieldPath: spec.nodeNmae
+    ports:
+      - containerPort: 80
