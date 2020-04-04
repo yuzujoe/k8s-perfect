@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-serviceaccount-pod
+spec:
+  serviceAccount: sample-serviceaccount
+  containers:
+  - name: nginx-container
+    image: nginx:1.15
