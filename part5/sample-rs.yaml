@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: sample-rs
@@ -6,16 +6,16 @@ spec:
   # nginx imageのPodが3つ起動する
   replicas: 3
   selector:
-    matcbLabels:
+    matchLabels:
       app: sample-app
   template:
     metadata:
       labels:
         app: sample-app
-  spec:
-    containers:
-      - name: nginx-container
-        image: nginx:1.15
-        ports:
-          - containerPort: 80
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:1.15
+          ports:
+            - containerPort: 80
 
