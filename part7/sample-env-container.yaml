@@ -11,13 +11,13 @@ spec:
     env:
       - name: CPU_REQUESTS
         valueFrom:
-            requestFieldRef:
-              containerNmae: nginx-container
-              resource: requests.cpu
+          resourceFieldRef:
+            resource: requests.cpu
+            containerName: nginx-container
       - name: CPU_LIMITS
         valueFrom:
-            requestFieldRef:
-              containerNmae: nginx-container
-              resource: limits.cpu
+          resourceFieldRef:
+            resource: limits.cpu
+            containerName: nginx-container
     ports:
       - containerPort: 80
